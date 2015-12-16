@@ -1,0 +1,30 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    twitter:
+        label   : martin.ssbuttons::lang.settings.twitter
+        type    : switch
+        span    : left
+        default : true
+    facebook:
+        label   : martin.ssbuttons::lang.settings.facebook
+        type    : switch
+        span    : left
+        default : true
+    google+:
+        label   : martin.ssbuttons::lang.settings.google+
+        type    : switch
+        span    : left
+        default : true
+    stumbleupon:
+        label   : martin.ssbuttons::lang.settings.stumbleupon
+        type    : switch
+        span    : left
+        default : true
+    linkedin:
+        label   : martin.ssbuttons::lang.settings.linkedin
+        type    : switch
+        span    : left
+        default : true

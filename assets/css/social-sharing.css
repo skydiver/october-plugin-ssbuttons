@@ -1,0 +1,32 @@
+.SocialSharingButtons .btn {
+    padding: 10px 15px;
+    border-radius: 3px;
+    font-size: 100%;
+    font-weight: 600;
+    text-transform: none;
+    box-shadow: inset 0 -1.2px rgba(0, 0, 0, 0.12);
+    outline: none;
+    -webkit-outline: none;
+    -o-outline: none;
+    -moz-outline: none;
+}
+
+.btn-twitter     { background:#00ACEE; }
+.btn-facebook    { background:#3B5998; }
+.btn-googleplus  { background:#E93F2E; }
+.btn-stumbleupon { background:#F74425; }
+.btn-linkedin    { background:#0E76A8; }
+
+.btn-twitter    , .btn-twitter:hover    , .btn-twitter:active,
+.btn-facebook   , .btn-facebook:hover   , .btn-facebook:active,
+.btn-googleplus , .btn-googleplus:hover , .btn-googleplus:active,
+.btn-stumbleupon, .btn-stumbleupon:hover, .btn-stumbleupon:active,
+.btn-linkedin   , .btn-linkedin:hover   , .btn-linkedin:active {
+    color: #fff !important;
+}
+
+.btn-twitter:active    , .btn-twitter:hover     { background:#0087BD; }
+.btn-facebook:active   , .btn-facebook:hover    { background:#30477A; }
+.btn-googleplus:active , .btn-googleplus:hover  { background:#BA3225; }
+.btn-stumbleupon:active, .btn-stumbleupon:hover { background:#C7371E; }
+.btn-linkedin:active   , .btn-linkedin:hover    { background:#0B6087; }
