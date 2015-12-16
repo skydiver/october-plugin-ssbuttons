@@ -1,4 +1,4 @@
-# Social Sharing Buttons
+# Social Sharing Buttons for OctoberCMS
 
 ## Introduction
 Display buttons to share content on different social networks.
