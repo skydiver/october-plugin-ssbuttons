@@ -1,0 +1,7 @@
+<div class="SocialSharingButtons">
+    {% if(__SELF__.property('twitter'))     %}<a href="http://twitter.com/share?url={{ url_current()|url_encode }}&text={{ this.page.title|url_encode }}" target="_blank" title="Share on Twitter" class="share-btn twitter"><i class="fa fa-twitter"></i></a>{% endif %}
+    {% if(__SELF__.property('facebook'))    %}<a href="http://www.facebook.com/sharer/sharer.php?u={{ url_current()|url_encode }}" target="_blank" title="Share on Facebook" class="share-btn facebook"><i class="fa fa-facebook"></i></a>{% endif %}
+    {% if(__SELF__.property('google+'))     %}<a href="https://plus.google.com/share?url={{ url_current()|url_encode }}" target="_blank" title="Share on Google+" class="share-btn google-plus"><i class="fa fa-google-plus"></i></a>{% endif %}
+    {% if(__SELF__.property('stumbleupon')) %}<a href="http://www.stumbleupon.com/submit?url={{ url_current()|url_encode }}&title={{ this.page.title|url_encode }}" target="_blank" title="Share on StumbleUpon" class="share-btn stumbleupon"><i class="fa fa-stumbleupon"></i></a>{% endif %}
+    {% if(__SELF__.property('linkedin'))    %}<a href="http://www.linkedin.com/shareArticle?url={{ url_current()|url_encode }}&title={{ this.page.title|url_encode }}" target="_blank" title="Share on LinkedIn" class="share-btn linkedin"><i class="fa fa-linkedin"></i></a>{% endif %}
+</div>

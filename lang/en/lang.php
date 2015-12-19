@@ -14,13 +14,16 @@
             'google+'     => 'Google+',
             'stumbleupon' => 'StumbleUpon',
             'linkedin'    => 'LinkedIn',
-
         ],
 
         'components' => [
             'ssbuttons' => [
                 'name'        => 'Share current page',
-                'description' => 'Display buttons to share the current page'
+                'description' => 'Display buttons to share the current page (Bootstrap required)'
+            ],
+            'ssbuttonsnb' => [
+                'name'        => 'Share current page (Alt)',
+                'description' => 'Display buttons to share the current page (No Bootstrap required)'
             ]
         ]
 
