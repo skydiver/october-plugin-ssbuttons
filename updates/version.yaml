@@ -6,3 +6,5 @@
     - New "Simple Sharing Buttons" component with 6 differents themes and more social networks
 1.0.3.1:
     - Bugfix on multiple components on same page
+1.0.3.2:
+    - HTML Validation fix on "Simple Sharing Buttons" component
