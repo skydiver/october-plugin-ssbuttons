@@ -4,3 +4,5 @@
     - Created an "non-required-Bootstrap" alternative version
 1.0.3:
     - New "Simple Sharing Buttons" component with 6 differents themes and more social networks
+1.0.3.1:
+    - Bugfix on multiple components on same page
