@@ -17,8 +17,11 @@
 
         public function onRun() {
             $this->addCss('/plugins/martin/ssbuttons/assets/css/social-sharing-ssb.css');
-            $this->page['type'] = (strpos($this->properties['theme'], 'svg') ? 'svg' : 'png');
         }
+        
+        public function onRender() {
+            $this->page['type'] = (strpos($this->properties['theme'], 'svg') ? 'svg' : 'png');
+        }        
 
         public function defineProperties() {
 
