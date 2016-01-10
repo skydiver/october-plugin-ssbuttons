@@ -8,8 +8,6 @@
 
     class SSButtonsNB extends ComponentBase {
 
-        public $technologies;
-
         public function componentDetails() {
             return [
                 'name'        => 'martin.ssbuttons::lang.components.ssbuttonsnb.name',
