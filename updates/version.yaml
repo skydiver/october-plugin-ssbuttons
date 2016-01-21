@@ -8,3 +8,5 @@
     - Bugfix on multiple components on same page
 1.0.3.2:
     - HTML Validation fix on "Simple Sharing Buttons" component
+1.0.3.3:
+    - Fixed Facebook button on Bootstrap version
