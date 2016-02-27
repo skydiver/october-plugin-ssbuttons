@@ -10,3 +10,5 @@
     - HTML Validation fix on "Simple Sharing Buttons" component
 1.0.3.3:
     - Fixed Facebook button on Bootstrap version
+1.0.3.4:
+    - Fixed image path on "Simple Sharing Buttons" component
