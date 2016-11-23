@@ -2,11 +2,15 @@
 
     namespace Martin\SSButtons\Components;
 
+    use Lang;
     use Cms\Classes\ComponentBase;
     use Cms\Classes\Page;
-    use Lang;
+    use Martin\SSButtons\Classes\ButtonsParameters as Buttons;
+    use Martin\SSButtons\Classes\Shared;
 
     class SSButtons extends ComponentBase {
+
+        public $defaultSort = ['twitter', 'facebook', 'google+', 'stumbleupon', 'linkedin'];
 
         public function componentDetails() {
             return [
@@ -16,123 +20,57 @@
         }
 
         public function onRun() {
+
+            # LOAD FA CSS
             if($this->properties['fa'] == 'maxcdn') {
                 $this->addCss('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css');
             }
+
+            # LOAD CUSTOM CSS
             $this->addCss('/plugins/martin/ssbuttons/assets/css/social-sharing.css');
-            $this->properties['buttons_parameters'] = $this->buttonsParameters();
-            $this->properties['buttons_order'] = ($this->properties['custom_order']) ? $this->customSortButtons() : $this->defaultSortButtons();
+
+            # GET BUTTONS PARAMETERS
+            $title = $this->page->title;
+            $url   = url($this->page->url);
+            $this->properties['buttons_parameters'] = Buttons::getParameters($title, $url);
+
+            # GET BUTTONS ORDER
+            if($this->properties['custom_order']) {
+                $props = $this->getProperties();
+                $order = Shared::customSortButtons($props);
+            } else {
+                $order = $this->defaultSort;
+            }
+
+            # SET BUTTONS ORDER
+            $this->properties['buttons_order'] = $order;
+
         }
 
         public function defineProperties() {
 
-            $properties['fa'] = [
-                'title'             => 'Load Font Awesome?',
-                'type'              => 'dropdown',
-                'default'           => 'maxcdn',
-                'placeholder'       => 'Select source',
-                'options'           => ['maxcdn' => 'Yes, from MaxCDN', 'no' => 'No'],
-                'showExternalParam' => false
-            ];
+            # BUTTONS FOR THIS COMPONENT
+            $buttons = $this->defaultSort;
 
-            $buttons = ['twitter', 'facebook', 'google+', 'stumbleupon', 'linkedin'];
+            # LOAD FA
+            $properties['fa'] = Shared::getPropertyFA();
+
+            # SHOW / HIDE BUTTONS
             foreach($buttons as $button) {
-                $properties[$button] = [
-                    'title'             => Lang::get('martin.ssbuttons::lang.settings.'.$button),
-                    'description'       => 'Display ' . Lang::get('martin.ssbuttons::lang.settings.'.$button) . ' button',
-                    'default'           => true,
-                    'type'              => 'checkbox',
-                    'showExternalParam' => false,
-                    'group'             => Lang::get('martin.ssbuttons::lang.components.ssbuttons.buttons_group')
-                ];
+                $properties[$button] = Shared::getPropertyButtons($button);
             }
 
-            $properties['custom_order'] = [
-                'title'             => Lang::get('martin.ssbuttons::lang.components.ssbuttons.order_custom'),
-                'description'       => Lang::get('martin.ssbuttons::lang.components.ssbuttons.order_customd'),
-                'default'           => false,
-                'type'              => 'checkbox',
-                'showExternalParam' => false,
-                'group'             => Lang::get('martin.ssbuttons::lang.components.ssbuttons.order_group'),
-            ];
+            # ENABLE CUSTOM ORDER
+            $properties['custom_order'] = Shared::getPropertyCustomOrder();
 
+            # BUTTONS CUSTOM ORDER
             $i = 1;
             foreach($buttons as $button) {
-                $properties['order_' . $button] = [
-                    'title'             => Lang::get('martin.ssbuttons::lang.settings.'.$button),
-                    'description'       => Lang::get('martin.ssbuttons::lang.components.ssbuttons.order_descr'),
-                    'default'           => $i++,
-                    'type'              => 'string',
-                    'showExternalParam' => false,
-                    'group'             => Lang::get('martin.ssbuttons::lang.components.ssbuttons.order_group'),
-                    'validation'        => [
-                        'integer' => [
-                            'message' => Lang::get('martin.ssbuttons::lang.components.ssbuttons.order_valid'),
-                            'min'     => ['value' => 1],
-                            'max'     => ['value' => 5]
-                        ]
-                    ]
-                ];
+                $properties['order_' . $button] = Shared::getPropertyOrder($button, $i++);
             }
 
             return $properties;
 
-        }
-
-        private function buttonsParameters() {
-            $parameters = [
-                'twitter' => [
-                    'href'  => 'http://twitter.com/home?status=' . urlencode($this->page->title . ' | ' . url($this->page->url)),
-                    'title' => 'Share on Twitter',
-                    'class' => 'btn btn-twitter',
-                    'icon'  => 'fa fa-twitter',
-                    'label' => 'Twitter',
-                ],
-                'facebook' => [
-                    'href'  => 'https://www.facebook.com/sharer/sharer.php?u=' . urlencode(url($this->page->url)),
-                    'title' => 'Share on Facebook',
-                    'class' => 'btn btn-facebook',
-                    'icon'  => 'fa fa-facebook',
-                    'label' => 'Facebook',
-                ],
-                'google+' => [
-                    'href'  => 'https://plus.google.com/share?url=' . urlencode($this->page->title . ' | ' . url($this->page->url)),
-                    'title' => 'Share on Google+',
-                    'class' => 'btn btn-googleplus',
-                    'icon'  => 'fa fa-google',
-                    'label' => 'Google+',
-                ],
-                'stumbleupon' => [
-                    'href'  => 'http://www.stumbleupon.com/submit?url=' . urlencode($this->page->title . ' | ' . url($this->page->url)),
-                    'title' => 'Share on StumbleUpon',
-                    'class' => 'btn btn-stumbleupon',
-                    'icon'  => 'fa fa-stumbleupon',
-                    'label' => 'Stumbleupon',
-                ],
-                'linkedin' => [
-                    'href'  => 'http://www.linkedin.com/shareArticle?mini=true&url=' . urlencode(url($this->page->url)) . '&title=&summary=' . urlencode($this->page->title),
-                    'title' => 'Share on LinkedIn',
-                    'class' => 'btn btn-linkedin',
-                    'icon'  => 'fa fa-linkedin',
-                    'label' => 'LinkedIn',
-                ],
-            ];
-            return $parameters;
-        }
-
-        private function defaultSortButtons() {
-            return ['twitter', 'facebook', 'google+', 'stumbleupon', 'linkedin'];
-        }
-
-        private function customSortButtons() {
-            $props = $this->getProperties();
-            foreach($props as $prop => $value) {
-                $is = explode('_', $prop);
-                if($is[0] != 'order') { continue; }
-                $order[$is[1]] = $value;
-            }
-            asort($order);
-            return array_keys($order);
         }
 
     }
