@@ -11,9 +11,9 @@
             $parameters = [
 
                 'twitter' => [
-                    'href'  => 'http://twitter.com/home?status=' . urlencode($title . ' | ' . $url),
+                    'href'  => 'https://twitter.com/share?url=' . urlencode($url) . '&text=' . urlencode($title),
                     'title' => 'Share on Twitter',
-                    'class' => 'btn btn-twitter',
+                    'class' => ['ssbuttons' => 'btn btn-twitter', 'ssbuttonsnb' => 'share-btn twitter'],
                     'icon'  => 'fa fa-twitter',
                     'label' => 'Twitter',
                 ],
@@ -21,31 +21,31 @@
                 'facebook' => [
                     'href'  => 'https://www.facebook.com/sharer/sharer.php?u=' . urlencode($url),
                     'title' => 'Share on Facebook',
-                    'class' => 'btn btn-facebook',
+                    'class' => ['ssbuttons' => 'btn btn-facebook', 'ssbuttonsnb' => 'share-btn facebook'],
                     'icon'  => 'fa fa-facebook',
                     'label' => 'Facebook',
                 ],
 
                 'google+' => [
-                    'href'  => 'https://plus.google.com/share?url=' . urlencode($title . ' | ' . $url),
+                    'href'  => 'https://plus.google.com/share?url=' . urlencode($url),
                     'title' => 'Share on Google+',
-                    'class' => 'btn btn-googleplus',
+                    'class' => ['ssbuttons' => 'btn btn-googleplus', 'ssbuttonsnb' => 'share-btn google-plus'],
                     'icon'  => 'fa fa-google',
                     'label' => 'Google+',
                 ],
 
                 'stumbleupon' => [
-                    'href'  => 'http://www.stumbleupon.com/submit?url=' . urlencode($title . ' | ' . $url),
+                    'href'  => 'http://www.stumbleupon.com/submit?url=' . urlencode($url) . '&title=' . urlencode($title),
                     'title' => 'Share on StumbleUpon',
-                    'class' => 'btn btn-stumbleupon',
+                    'class' => ['ssbuttons' => 'btn btn-stumbleupon', 'ssbuttonsnb' => 'share-btn stumbleupon'],
                     'icon'  => 'fa fa-stumbleupon',
                     'label' => 'Stumbleupon',
                 ],
 
                 'linkedin' => [
-                    'href'  => 'http://www.linkedin.com/shareArticle?mini=true&url=' . urlencode($url) . '&title=&summary=' . urlencode($title),
+                    'href'  => 'https://www.linkedin.com/shareArticle?mini=true&url=' . urlencode($url) . '&title=' . urlencode($title),
                     'title' => 'Share on LinkedIn',
-                    'class' => 'btn btn-linkedin',
+                    'class' => ['ssbuttons' => 'btn btn-linkedin', 'ssbuttonsnb' => 'share-btn linkedin'],
                     'icon'  => 'fa fa-linkedin',
                     'label' => 'LinkedIn',
                 ],
