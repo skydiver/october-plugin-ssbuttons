@@ -66,7 +66,7 @@
             # BUTTONS CUSTOM ORDER
             $i = 1;
             foreach($buttons as $button) {
-                $properties['order_' . $button] = Shared::getPropertyOrder($button, $i++);
+                $properties['order_' . $button] = Shared::getPropertyOrder($button, $i++, count($buttons));
             }
 
             return $properties;

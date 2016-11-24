@@ -39,7 +39,7 @@
             ];
         }
 
-        public static function getPropertyOrder($button, $position) {
+        public static function getPropertyOrder($button, $position, $max) {
             return [
                 'title'             => Lang::get('martin.ssbuttons::lang.settings.'.$button),
                 'description'       => Lang::get('martin.ssbuttons::lang.shared.order_descr'),
@@ -51,7 +51,7 @@
                     'integer' => [
                         'message' => Lang::get('martin.ssbuttons::lang.shared.order_valid'),
                         'min'     => ['value' => 1],
-                        'max'     => ['value' => 5]
+                        'max'     => ['value' => $max]
                     ]
                 ]
             ];

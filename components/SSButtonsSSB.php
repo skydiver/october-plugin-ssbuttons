@@ -2,11 +2,15 @@
 
     namespace Martin\SSButtons\Components;
 
+    use Lang;
     use Cms\Classes\ComponentBase;
     use Cms\Classes\Page;
-    use Lang;
+    use Martin\SSButtons\Classes\ButtonsParameters as Buttons;
+    use Martin\SSButtons\Classes\Shared;
 
     class SSButtonsSSB extends ComponentBase {
+
+        public $defaultSort = ['facebook', 'twitter', 'google+', 'tumblr', 'pinterest', 'pocket', 'reddit', 'linkedin', 'wordpress', 'pinboard', 'email'];
 
         public function componentDetails() {
             return [
@@ -16,26 +20,37 @@
         }
 
         public function onRun() {
+
+            # LOAD COMPONENT CUSTOM CSS
             $this->addCss('/plugins/martin/ssbuttons/assets/css/social-sharing-ssb.css');
-        }
-        
-        public function onRender() {
+
+            # ICONS TYPE
             $this->page['type'] = (strpos($this->properties['theme'], 'svg') ? 'svg' : 'png');
-        }        
+
+            # GET BUTTONS PARAMETERS
+            $title = $this->page->title;
+            $url   = url($this->page->url);
+            $this->properties['buttons_parameters'] = Buttons::getParameters($title, $url);
+
+            # GET BUTTONS ORDER
+            if($this->properties['custom_order']) {
+                $props = $this->getProperties();
+                $order = Shared::customSortButtons($props);
+            } else {
+                $order = $this->defaultSort;
+            }
+
+            # SET BUTTONS ORDER
+            $this->properties['buttons_order'] = $order;
+
+        }
 
         public function defineProperties() {
 
-            $buttons = ['facebook', 'twitter', 'google+', 'tumblr', 'pinterest', 'pocket', 'reddit', 'linkedin', 'wordpress', 'pinboard', 'email'];
+            # BUTTONS FOR THIS COMPONENT
+            $buttons = $this->defaultSort;
 
-            foreach($buttons as $button) {
-                $properties[$button] = [
-                    'title'             => Lang::get('martin.ssbuttons::lang.settings.'.$button),
-                    'description'       => 'Display ' . Lang::get('martin.ssbuttons::lang.settings.'.$button) . ' button',
-                    'default'           => true,
-                    'type'              => 'checkbox',
-                    'showExternalParam' => false
-                ];
-            }
+            # THEME
             $properties['theme'] = [
                 'title'             => 'Icons theme',
                 'type'              => 'dropdown',
@@ -51,7 +66,22 @@
                 ],
                 'showExternalParam' => false
             ];
+
+            # SHOW / HIDE BUTTONS
+            foreach($buttons as $button) {
+                $properties[$button] = Shared::getPropertyButtons($button);
+            }
+            # ENABLE CUSTOM ORDER
+            $properties['custom_order'] = Shared::getPropertyCustomOrder();
+
+            # BUTTONS CUSTOM ORDER
+            $i = 1;
+            foreach($buttons as $button) {
+                $properties['order_' . $button] = Shared::getPropertyOrder($button, $i++, count($buttons));
+            }
+
             return $properties;
+
         }
 
     }
