@@ -12,3 +12,7 @@
     - Fixed Facebook button on Bootstrap version
 1.0.3.4:
     - Fixed image path on "Simple Sharing Buttons" component
+1.1.0:
+    - Custom buttons order on components
+    - Group component properties
+    - Components code refactoring

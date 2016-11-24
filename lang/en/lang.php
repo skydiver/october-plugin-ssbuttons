@@ -26,7 +26,7 @@
         'components' => [
             'ssbuttons' => [
                 'name'        => 'Share current page',
-                'description' => 'Display buttons to share the current page (Bootstrap required)'
+                'description' => 'Display buttons to share the current page (Bootstrap required)',
             ],
             'ssbuttonsnb' => [
                 'name'        => 'Share current page (Alt)',
@@ -36,6 +36,15 @@
                 'name'        => 'Simple Sharing Buttons',
                 'description' => 'Display buttons to share the current page (Multiple themes included)'
             ]
+        ],
+
+        'shared' => [
+            'buttons_group' => 'Show / Hide Buttons',
+            'order_custom'  => 'Enable custom order',
+            'order_customd' => 'Display buttons with your own custom order',
+            'order_group'   => 'Custom Order',
+            'order_descr'   => 'Use only numbers',
+            'order_valid'   => 'The order position needs to be a number between 1 - 5',
         ]
 
     ];
