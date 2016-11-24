@@ -24,9 +24,6 @@
             # LOAD COMPONENT CUSTOM CSS
             $this->addCss('/plugins/martin/ssbuttons/assets/css/social-sharing-ssb.css');
 
-            # ICONS TYPE
-            $this->page['type'] = (strpos($this->properties['theme'], 'svg') ? 'svg' : 'png');
-
             # GET BUTTONS PARAMETERS
             $title = $this->page->title;
             $url   = url($this->page->url);
@@ -43,6 +40,11 @@
             # SET BUTTONS ORDER
             $this->properties['buttons_order'] = $order;
 
+        }
+
+        public function onRender() {
+            # ICONS TYPE
+            $this->page['type'] = (strpos($this->properties['theme'], 'svg') ? 'svg' : 'png');
         }
 
         public function defineProperties() {
