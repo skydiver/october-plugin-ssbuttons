@@ -30,8 +30,8 @@
             $this->addCss('/plugins/martin/ssbuttons/assets/css/social-sharing-nb.css');
 
             # GET BUTTONS PARAMETERS
-            $title = $this->page->title;
-            $url   = url($this->page->url);
+            $title = ($this->properties['js']) ? '___title___' : $this->page->title;
+            $url   = ($this->properties['js']) ? '___url___'   : url($this->page->url);
             $this->properties['buttons_parameters'] = Buttons::getParameters($title, $url);
 
             # GET BUTTONS ORDER
@@ -54,6 +54,9 @@
 
             # LOAD FA
             $properties['fa'] = Shared::getPropertyFA();
+
+            # USE JS
+            $properties['js'] = Shared::getPropertyJS();
 
             # SHOW / HIDE BUTTONS
             foreach($buttons as $button) {

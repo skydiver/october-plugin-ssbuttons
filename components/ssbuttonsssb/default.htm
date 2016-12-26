@@ -7,3 +7,7 @@
 {% endfor %}
     </ul>
 </div>
+
+{% if __SELF__.property('js') %}
+    <script src="/plugins/martin/ssbuttons/assets/js/ssbuttons.js"></script>
+{% endif %}
