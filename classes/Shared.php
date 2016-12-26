@@ -17,6 +17,16 @@
             ];
         }
 
+        public static function getPropertyJS() {
+            return [
+                'title'             => Lang::get('martin.ssbuttons::lang.shared.js_title'),
+                'description'       => Lang::get('martin.ssbuttons::lang.shared.js_descr'),
+                'type'              => 'checkbox',
+                'default'           => false,
+                'showExternalParam' => false
+            ];
+        }
+
         public static function getPropertyButtons($button) {
             return [
                 'title'             => Lang::get('martin.ssbuttons::lang.settings.'.$button),

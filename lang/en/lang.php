@@ -45,6 +45,8 @@
             'order_group'   => 'Custom Order',
             'order_descr'   => 'Use only numbers',
             'order_valid'   => 'The order position needs to be a number between 1 - 5',
+            'js_title'      => 'Use JS for Title & URL',
+            'js_descr'      => 'Use JavaScript to generate page Title and URL. Useful for SEO extensions',
         ]
 
     ];
