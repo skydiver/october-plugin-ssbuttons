@@ -16,3 +16,5 @@
     - Custom buttons order on components
     - Group component properties
     - Components code refactoring
+1.2.0:
+    - new option to generate Title & URL with JavaScript. Useful to combine with SEO plugins.
