@@ -18,3 +18,5 @@
     - Components code refactoring
 1.2.0:
     - new option to generate Title & URL with JavaScript. Useful to combine with SEO plugins.
+1.2.1:
+    - Fix when using title & URL with JavaScript
