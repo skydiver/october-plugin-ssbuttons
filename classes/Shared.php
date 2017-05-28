@@ -3,8 +3,63 @@
     namespace Martin\SSButtons\Classes;
 
     use Lang;
+    use Martin\SSButtons\Classes\ButtonsParameters as Buttons;
 
-    class Shared {
+    trait Shared {
+
+        public function onRunShared() {
+
+            # LOAD FA CSS
+            if($this->property('fa') == 'maxcdn') {
+                $this->addCss('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+            }
+
+            # GET BUTTONS PARAMETERS
+            $title = $this->property('js') ? '___title___' : $this->page->title;
+            $url   = $this->property('js') ? '___url___'   : url($this->currentPageUrl());
+            $this->properties['buttons_parameters'] = Buttons::getParameters($title, $url);
+
+            # GET BUTTONS ORDER
+            if($this->property('custom_order')) {
+                $props = $this->getProperties();
+                $order = $this->customSortButtons($props);
+            } else {
+                $order = $this->defaultSort;
+            }
+
+            # SET BUTTONS ORDER
+            $this->properties['buttons_order'] = $order;
+
+        }
+
+        public function definePropertiesShared() {
+
+            # BUTTONS FOR THIS COMPONENT
+            $buttons = $this->defaultSort;
+
+            # LOAD FA
+            $properties['fa'] = $this->getPropertyFA();
+
+            # USE JS
+            $properties['js'] = $this->getPropertyJS();
+
+            # SHOW / HIDE BUTTONS
+            foreach($buttons as $button) {
+                $properties[$button] = $this->getPropertyButtons($button);
+            }
+
+            # ENABLE CUSTOM ORDER
+            $properties['custom_order'] = $this->getPropertyCustomOrder();
+
+            # BUTTONS CUSTOM ORDER
+            $i = 1;
+            foreach($buttons as $button) {
+                $properties['order_' . $button] = $this->getPropertyOrder($button, $i++, count($buttons));
+            }
+
+            return $properties;
+
+        }
 
         public static function getPropertyFA() {
             return [

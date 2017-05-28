@@ -4,11 +4,10 @@
 
     use Lang;
     use Cms\Classes\ComponentBase;
-    use Cms\Classes\Page;
-    use Martin\SSButtons\Classes\ButtonsParameters as Buttons;
-    use Martin\SSButtons\Classes\Shared;
 
     class SSButtonsSSB extends ComponentBase {
+
+        use \Martin\SSButtons\Classes\Shared;
 
         public $defaultSort = ['facebook', 'twitter', 'google+', 'tumblr', 'pinterest', 'pocket', 'reddit', 'linkedin', 'wordpress', 'pinboard', 'email'];
 
@@ -21,24 +20,11 @@
 
         public function onRun() {
 
+            # LOAD SHARED "onRun"
+            $this->onRunShared();
+
             # LOAD COMPONENT CUSTOM CSS
             $this->addCss('/plugins/martin/ssbuttons/assets/css/social-sharing-ssb.css');
-
-            # GET BUTTONS PARAMETERS
-            $title = ($this->properties['js']) ? '___title___' : $this->page->title;
-            $url   = ($this->properties['js']) ? '___url___'   : url($this->page->url);
-            $this->properties['buttons_parameters'] = Buttons::getParameters($title, $url);
-
-            # GET BUTTONS ORDER
-            if($this->properties['custom_order']) {
-                $props = $this->getProperties();
-                $order = Shared::customSortButtons($props);
-            } else {
-                $order = $this->defaultSort;
-            }
-
-            # SET BUTTONS ORDER
-            $this->properties['buttons_order'] = $order;
 
         }
 
@@ -49,8 +35,11 @@
 
         public function defineProperties() {
 
-            # BUTTONS FOR THIS COMPONENT
-            $buttons = $this->defaultSort;
+            # GET SHARED PROPERTIES
+            $properties = $this->definePropertiesShared();
+            
+            # REMOVE FA ON THIS COMPONENT
+            unset($properties['fa']);
 
             # THEME
             $properties['theme'] = [
@@ -68,24 +57,7 @@
                 ],
                 'showExternalParam' => false
             ];
-
-            # USE JS
-            $properties['js'] = Shared::getPropertyJS();
-
-            # SHOW / HIDE BUTTONS
-            foreach($buttons as $button) {
-                $properties[$button] = Shared::getPropertyButtons($button);
-            }
-
-            # ENABLE CUSTOM ORDER
-            $properties['custom_order'] = Shared::getPropertyCustomOrder();
-
-            # BUTTONS CUSTOM ORDER
-            $i = 1;
-            foreach($buttons as $button) {
-                $properties['order_' . $button] = Shared::getPropertyOrder($button, $i++, count($buttons));
-            }
-
+            
             return $properties;
 
         }

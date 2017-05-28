@@ -20,3 +20,7 @@
     - new option to generate Title & URL with JavaScript. Useful to combine with SEO plugins.
 1.2.1:
     - Fix when using title & URL with JavaScript
+1.3.0:
+    - Fixed new JavaScript option with Blog plugin (thanks to sean-ciaschi)
+    - Using FontAwesome through HTTPS by default
+    - Components code refactoring
