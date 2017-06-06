@@ -24,3 +24,5 @@
     - Fixed new JavaScript option with Blog plugin (thanks to sean-ciaschi)
     - Using FontAwesome through HTTPS by default
     - Components code refactoring
+1.3.0.1:
+    - Fix for Internet Explorer when using JavaScript for title & URL  (thanks to sean-ciaschi)
