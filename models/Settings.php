@@ -18,11 +18,11 @@
 
         public function __construct() {
             $this->attributeNames = [
-                'twitter'     => Lang::get('martin.ssbuttons::lang.settings.twitter'),
-                'facebook'    => Lang::get('martin.ssbuttons::lang.settings.facebook'),
-                'google+'     => Lang::get('martin.ssbuttons::lang.settings.Google+'),
-                'stumbleupon' => Lang::get('martin.ssbuttons::lang.settings.stumbleupon'),
-                'linkedin'    => Lang::get('martin.ssbuttons::lang.settings.linkedin'),
+                'twitter'     => Lang::get('martin.ssbuttons::lang.settings.twitter.name'),
+                'facebook'    => Lang::get('martin.ssbuttons::lang.settings.facebook.name'),
+                'google+'     => Lang::get('martin.ssbuttons::lang.settings.Google+.name'),
+                'stumbleupon' => Lang::get('martin.ssbuttons::lang.settings.stumbleupon.name'),
+                'linkedin'    => Lang::get('martin.ssbuttons::lang.settings.linkedin.name'),
             ];
             parent::__construct();
         }

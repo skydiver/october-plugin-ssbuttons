@@ -84,8 +84,8 @@
 
         public static function getPropertyButtons($button) {
             return [
-                'title'             => Lang::get('martin.ssbuttons::lang.settings.'.$button),
-                'description'       => 'Display ' . Lang::get('martin.ssbuttons::lang.settings.'.$button) . ' button',
+                'title'             => Lang::get('martin.ssbuttons::lang.settings.'.$button.'.name'),
+                'description'       => 'Display ' . Lang::get('martin.ssbuttons::lang.settings.'.$button .'.title') . ' button',
                 'default'           => true,
                 'type'              => 'checkbox',
                 'showExternalParam' => false,
@@ -106,7 +106,7 @@
 
         public static function getPropertyOrder($button, $position, $max) {
             return [
-                'title'             => Lang::get('martin.ssbuttons::lang.settings.'.$button),
+                'title'             => Lang::get('martin.ssbuttons::lang.settings.'.$button .'.name'),
                 'description'       => Lang::get('martin.ssbuttons::lang.shared.order_descr'),
                 'default'           => $position,
                 'type'              => 'string',

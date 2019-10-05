@@ -4,27 +4,27 @@
 
 fields:
     twitter:
-        label   : martin.ssbuttons::lang.settings.twitter
+        label   : martin.ssbuttons::lang.settings.twitter.name
         type    : switch
         span    : left
         default : true
     facebook:
-        label   : martin.ssbuttons::lang.settings.facebook
+        label   : martin.ssbuttons::lang.settings.facebook.name
         type    : switch
         span    : left
         default : true
     google+:
-        label   : martin.ssbuttons::lang.settings.google+
+        label   : martin.ssbuttons::lang.settings.google+.name
         type    : switch
         span    : left
         default : true
     stumbleupon:
-        label   : martin.ssbuttons::lang.settings.stumbleupon
+        label   : martin.ssbuttons::lang.settings.stumbleupon.name
         type    : switch
         span    : left
         default : true
     linkedin:
-        label   : martin.ssbuttons::lang.settings.linkedin
+        label   : martin.ssbuttons::lang.settings.linkedin.name
         type    : switch
         span    : left
         default : true

@@ -28,3 +28,6 @@
     - Fix for Internet Explorer when using JavaScript for title & URL  (thanks to sean-ciaschi)
 1.3.1:
     - Add czech locale (thanks to vojtasvoboda)
+1.4.0:
+    - Add translations support  (thanks to Hounddd/damien)
+    - Add French translation

@@ -9,18 +9,54 @@
         ],
 
         'settings' => [
-            'twitter'     => 'Twitter',
-            'facebook'    => 'Facebook',
-            'google+'     => 'Google+',
-            'stumbleupon' => 'StumbleUpon',
-            'linkedin'    => 'LinkedIn',
-            'tumblr'      => 'Tumblr',
-            'pinterest'   => 'Pinterest',
-            'pocket'      => 'Pocket',
-            'reddit'      => 'Reddit',
-            'wordpress'   => 'WordPress',
-            'pinboard'    => 'Pinboard',
-            'email'       => 'Email',
+            'twitter'    => [
+                'name' => 'Twitter',
+                'title' => 'Share on Twitter'
+            ],
+            'facebook'    => [
+                'name' => 'Facebook',
+                'title' => 'Share on Facebook'
+            ],
+            'google+'    => [
+                'name' => 'Google+',
+                'title' => 'Share on Google+'
+            ],
+            'stumbleupon'    => [
+                'name' => 'StumbleUpon',
+                'title' => 'Share on StumbleUpon'
+            ],
+            'linkedin'    => [
+                'name' => 'LinkedIn',
+                'title' => 'Share on LinkedIn'
+            ],
+            'tumblr'    => [
+                'name' => 'Tumblr',
+                'title' => 'Post to Tumblr'
+            ],
+            'pinterest'    => [
+                'name' => 'Pinterest',
+                'title' => 'Pin it on Pinterest'
+            ],            
+            'pocket'    => [
+                'name' => 'Pocket',
+                'title' => 'Add to Pocket'
+            ],
+            'reddit'    => [
+                'name' => 'Reddit',
+                'title' => 'Submit to Reddit'
+            ],
+            'wordpress'    => [
+                'name' => 'WordPress',
+                'title' => 'Publish on WordPress'
+            ],
+            'pinboard'    => [
+                'name' => 'Pinboard',
+                'title' => 'Save to Pinboard'
+            ],
+            'email'    => [
+                'name' => 'Email',
+                'title' => 'Send by Email'
+            ]
         ],
 
         'components' => [
@@ -47,6 +83,7 @@
             'order_valid'   => 'The order position needs to be a number between 1 - 5',
             'js_title'      => 'Use JS for Title & URL',
             'js_descr'      => 'Use JavaScript to generate page Title and URL. Useful for SEO extensions',
+            'themes'        => 'Icons theme'
         ]
 
     ];

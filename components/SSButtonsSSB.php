@@ -43,7 +43,7 @@
 
             # THEME
             $properties['theme'] = [
-                'title'             => 'Icons theme',
+                'title'             => Lang::get('martin.ssbuttons::lang.shared.themes'),
                 'type'              => 'dropdown',
                 'default'           => 'flat_web_icon_set_color',
                 'placeholder'       => 'Select icons theme',
